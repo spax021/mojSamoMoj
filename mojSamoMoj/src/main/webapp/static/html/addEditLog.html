@@ -1,0 +1,43 @@
+
+<h2>WAFEPA - Add/edit log</h2>
+
+<form class="form-horizontal" ng-init="initLog()">
+
+	<div class="form-group">
+		<label class="col-sm-2">Activity: </label>
+		<div class="col-sm-6">
+			<select class="form-control"
+				ng-options="activity as activity.name for activity in activities" ng-model="activitySelected">
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2">User: </label>
+		<div class="col-sm-6">
+			<select class="form-control"
+				ng-options="user as user.email for user in users" ng-model="userSelected">
+			</select>
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2">Date: </label>
+		<div class="col-sm-6">
+			<input class="form-control" ng-model="log.date" placeholder="YYYY-MM-DD" />
+		</div>
+	</div>
+
+	<div class="form-group">
+		<label class="col-sm-2">Duration: </label>
+		<div class="col-sm-6">
+			<input class="form-control" ng-model="log.duration" />
+		</div>
+	</div>
+
+	<div class="form-group">
+		<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-default" ng-click="saveLog()">Save</button>
+		</div>
+	</div>
+</form>

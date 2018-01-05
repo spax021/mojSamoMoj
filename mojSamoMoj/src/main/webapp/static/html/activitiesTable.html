@@ -1,0 +1,47 @@
+
+<form>
+<label>Search: <input ng-model="search" /></label>
+<button class="btn btn-danger btn-xs" ng-click="getActivities()">Search</button>
+<button class="btn btn-danger btn-xs" ng-click="search = null; getActivities()">Clear</button>
+<label><input type="checkbox" align="right" ng-model="showHidden" ng-change="page=0;getActivities()"/>Show hidden</label>
+</form>
+
+<table class="table table-bordered" ng-init="getActivities()">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Name</th>
+			<th>LogCount</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+	   <!-- filter:{name:search}   filter:search    filtriranje svih polja-->
+		<tr ng-repeat="activity in activities">
+			<td>{{ activity.id }}</td>
+			<td>{{ activity.name }}</td>
+			<td><a href="#/activities/{{ activity.id }}/logs">{{ activity.logCount }}</a></td> 
+			<td>
+				<button type="button" class="btn btn-danger btn-xs" ng-click="deleteActivity(activity.id, $index); getActivities()">Delete</button>
+				<a class="btn btn-success btn-xs" href="#/activities/edit/{{ activity.id }}">Edit</a>
+				<a class="btn btn-warning btn-xs" href="#/activities/view/{{ activity.id }}">View</a>
+				<a class="btn btn-primary btn-xs" ng-click="toggleHideActivity($index)">{{activity.hidden ? "Unhide" : "Hide"}}</a>
+			</td>
+			
+		</tr>
+	</tbody>
+</table>
+<!-- 				  stranica je sad scope u app.js nesti slicno id-u-->
+<div>Per page: <input ng-model="stranica" /><button class="btn btn-default btn-xs" type="button" ng-click="getActivities()">Potvrdi</button></div>
+
+<div class="col-md-12 text-right">
+<button class="btn btn-default btn-xs" ng-click="changePage(page - 1)" ng-disabled="page == 0">Previous</button>
+<span class="label label-default">{{ page + 1 }}</span>
+<button class="btn btn-default btn-xs" ng-click="changePage(page + 1)" ng-disabled="page == totalPages -1">Next</button>
+</div>
+
+
+<div class="col-md-12 text-center">
+    <span ng-hide="successMessage || errorMessage" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+    <span class="label label-danger">{{ errorMessage }}</span>
+</div>

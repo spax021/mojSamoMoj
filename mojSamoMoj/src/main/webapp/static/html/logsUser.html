@@ -1,0 +1,28 @@
+<h1>Log</h1>
+
+<table class="table table-bordered" ng-init="getLogs()">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>User</th>
+			<th>Activity</th>
+			<th>Date</th>
+			<th>Duration</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+
+		<tr ng-repeat="log in logs">
+			<td>{{ log.id }}</td>
+			<td>{{ log.user.firstname }}</td>
+			<td>{{ log.activity.name }}</td>
+			<td>{{ log.date }}</td>
+			<td>{{ log.duration }}</td>
+			
+		</tr>
+	</tbody>
+</table>
+
+
+

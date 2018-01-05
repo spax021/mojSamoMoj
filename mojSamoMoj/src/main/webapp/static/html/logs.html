@@ -1,0 +1,45 @@
+
+<table class="table table-bordered" ng-init="getLogs()">
+
+<h1>Log</h1>
+
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>User</th>
+			<th>Date</th>
+			<th>Duration</th>
+			<th>Activity</th>
+			
+		</tr>
+	</thead>
+	<tbody>
+	   <!-- filter:{name:search}   filter:search    filtriranje svih polja-->
+		<tr ng-repeat="log in logs">
+			<td>{{ log.id }}</td>
+			<td>{{ log.user.email }}</td>
+			<td>{{ log.date }}</td>
+			<td>{{ log.duration }}</td>
+			<td>{{ log.activity.name }}</td>
+			
+		</tr>
+	</tbody>
+</table>
+
+<div class="col-md-12 text-center">
+    <span ng-hide="successMessage || errorMessage" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+    <span class="label label-danger">{{ errorMessage }}</span>
+</div>
+
+<div class="row">
+    <div class="text-left">
+
+    </div>
+    <div class="text-right">
+        <button class="btn btn-default" ng-click="changePage(page - 1)" ng-disabled="page == 0">Previous</button>
+        <span class="label label-default">{{ page + 1 }}</span>
+        <button class="btn btn-default" ng-click="changePage(page + 1)" ng-disabled="page == totalPages - 1">Next
+        </button>
+    </div>
+
+</div>

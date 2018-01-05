@@ -1,0 +1,50 @@
+
+<form>
+<label>Search: <input ng-model="search" /></label>
+<button class="btn btn-danger btn-xs" ng-click="getUsers()">Search</button>
+<button class="btn btn-danger btn-xs" ng-click="search = null; getUsers()">Clear</button>
+</form>
+
+<table class="table table-bordered" ng-init="getUsers()">
+	<thead>
+		<tr>
+			<th>ID</th>
+			<th>Email</th>
+			<th>Password</th>
+			<th>First Name</th>
+			<th>Last Name</th>
+			<th>LogCount</th>
+			<th>Actions</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="user in users">
+			<td>{{user.id}}</td>
+			<td>{{user.email}}</td>
+			<td>{{user.password}}</td>
+			<td>{{user.firstname}}</td>
+			<td>{{user.lastname}}</td>
+			<td><a href="#/users/{{ user.id }}/logs">{{ user.logCount }}</a></td>
+			<td>
+				<button type="button" class="btn btn-danger btn-xs" ng-click="deleteUser(user.id, $index); getUsers()">Delete</button>
+				<a class="btn btn-success btn-xs" href="#/users/edit/{{ user.id }}">Edit</a>
+				<a class="btn btn-warning btn-xs" href="#/users/view/{{ user.id }}">View</a>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<!-- 				  stranica je sad scope u app.js nesti slicno id-u-->
+<div>Per page: <input ng-model="stranica" /><button class="btn btn-default btn-xs" type="button" ng-click="getUsers()">Potvrdi</button></div>
+
+<div class="col-md-12 text-right">
+<button class="btn btn-default btn-xs" ng-click="changePage(page - 1)" ng-disabled="page == 0">Previous</button>
+<span class="label label-default">{{ page + 1 }}</span>
+<button class="btn btn-default btn-xs" ng-click="changePage(page + 1)" ng-disabled="page == totalPages -1">Next</button>
+</div>
+
+
+<div class="col-md-12 text-center">
+    <span ng-hide="successMessage || errorMessage" class="glyphicon glyphicon-refresh glyphicon-refresh-animate"></span>
+    <span class="label label-danger">{{ errorMessage }}</span>
+</div>

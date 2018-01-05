@@ -1,0 +1,19 @@
+
+<h2>WAFEPA - Add/edit activity</h2>
+
+<form class="form-horizontal" ng-init="initActivity()">
+
+
+    <div class="form-group">
+        <label class="col-sm-2">Name: </label>
+        <div class="col-sm-6">
+            <input class="form-control" ng-model="activity.name"/>
+        </div>
+    </div>      
+
+    <div class="form-group">
+    	<div class="col-sm-offset-2 col-sm-10">
+			<button class="btn btn-default" ng-click="saveActivity()" ng-disabled="!activity.name">Save</button>
+		</div>
+  </div>
+</form>

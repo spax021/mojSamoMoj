@@ -1,0 +1,46 @@
+ Movie:
+
+<form>
+	<input type ng-model="title">
+	<button class="btn btn-info" ng-click="getMovie()">Search</button>
+</form>
+
+<table ng-click="getMovie()">
+	<!-- 
+	<tr>
+		<td><img ng-src="{{movie.Poster}}" alt="{{movie.Title}}"></td>
+	</tr>
+	-->
+
+	<tr>
+		<td>Title:</td>
+		<td>{{ movie.Title }}</td>
+	</tr>
+
+	<tr>
+		<td>Actors:</td>
+		<td>{{ movie.Actors }}</td>
+	</tr>
+
+	<tr>
+		<td>Director:</td>
+		<td>{{ movie.Director }}</td>
+	</tr>
+
+	<tr>
+		<td>Released:</td>
+		<td>{{ movie.Released }}</td>
+	</tr>
+
+
+</table>
+
+
+
+
+
+
+
+
+
+
